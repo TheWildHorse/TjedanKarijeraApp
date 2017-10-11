@@ -9,7 +9,8 @@
     "framework7": "^1.5.3",
     "framework7-react": "^0.9.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-qr-reader": "https://github.com/JodusNodus/react-qr-reader.git#ios11-fix"
   },
   "scripts": {
     "start": "react-scripts start",

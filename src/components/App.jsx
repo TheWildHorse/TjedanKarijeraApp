@@ -1,134 +1,39 @@
 import React, {PropTypes} from 'react';
 
 import {
-	Framework7App, Statusbar, Panel, View, Navbar, Pages, Page, ContentBlock, ContentBlockTitle, 
-	List, ListItem, Views, NavLeft, Link, NavCenter, NavRight, GridRow, GridCol, Button, Popup,
-	LoginScreen, LoginScreenTitle, ListButton, ListLabel, FormLabel, FormInput
+	Framework7App, Statusbar, View, Navbar, Pages, Page,
+	List, ListItem, Views, Link, NavCenter, NavRight,
+	LoginScreen, LoginScreenTitle, ListButton, ListLabel, FormLabel, FormInput, Tab, Tabs, Toolbar
 } from 'framework7-react';
 
 import {routes} from '../routes';
 
-const LeftPanel = (props, context) => (
-	<Panel left reveal layout="dark">
-		<View id="left-panel-view" navbarThrough dynamicNavbar="true">
-			{context.framework7AppContext.theme.ios ? <Navbar title="Left Panel"></Navbar> : null}
-			<Pages>
-				<Page>
-					{context.framework7AppContext.theme.material ? <Navbar title="Left Panel"></Navbar> : null}
-					<ContentBlock inner>
-						<p>Left panel content goes here</p>
-					</ContentBlock>
-					<ContentBlockTitle>Load page in panel</ContentBlockTitle>
-					<List>
-						<ListItem link="/about/" title="About"></ListItem>
-						<ListItem link="/form/" title="Form"></ListItem>
-					</List>
-					<ContentBlockTitle>Load page in main view</ContentBlockTitle>
-					<List>
-						<ListItem link="/about/" title="About" linkView="#main-view" linkClosePanel></ListItem>
-						<ListItem link="/form/" title="Form" linkView="#main-view" linkClosePanel></ListItem>
-					</List>
-				</Page>
-			</Pages>
-		</View>
-	</Panel>
-);
-
-LeftPanel.contextTypes = {
-	framework7AppContext: PropTypes.object
-};
-
-const RightPanel = (props, context) => (
-	<Panel right cover layout="dark">
-		<View id="right-panel-view" navbarThrough dynamicNavbar={true}>
-			{context.framework7AppContext.theme.ios ? <Navbar title="Right Panel" sliding /> : null}
-			<Pages>
-				<Page>
-					{context.framework7AppContext.theme.material ? <Navbar title="Right Panel" sliding /> : null}
-					<ContentBlock>
-						<p>Right panel content goes here</p>
-					</ContentBlock>
-					<ContentBlockTitle>Load page in panel</ContentBlockTitle>
-					<List>
-						<ListItem link="/about/" title="About"></ListItem>
-						<ListItem link="/form/" title="Form"></ListItem>
-					</List>
-					<ContentBlockTitle>Load page in main view</ContentBlockTitle>
-					<List>
-						<ListItem link="/about/" title="About" linkView="#main-view" linkClosePanel></ListItem>
-						<ListItem link="/form/" title="Form" linkView="#main-view" linkClosePanel></ListItem>
-					</List>
-				</Page>
-			</Pages>
-		</View>
-	</Panel>
-);
-
-RightPanel.contextTypes = {
-	framework7AppContext: PropTypes.object
-};
-
 const MainViews = (props, context) => {
 	return (
 		<Views>
-			<View id="main-view" navbarThrough dynamicNavbar={true} main url="/">
+			<View id="main-view" navbarThrough dynamicNavbar={true} main url="/tabs/program">
 				{/* Navbar */}
 				{context.framework7AppContext.theme.ios ? (
 					<Navbar>
-						<NavLeft>
-							<Link icon="icon-bars" openPanel="left" />
-						</NavLeft>
-						<NavCenter sliding>Framework7</NavCenter>
+						<NavCenter sliding>Tjedan Karijera</NavCenter>
 						<NavRight>
-							<Link icon="icon-bars" openPanel="right"></Link>
+							<Link iconFa="sign-out" openPanel="right"></Link>
 						</NavRight>
 					</Navbar>
 				) : null}
 				{/* Pages */}
 				<Pages>
 					<Page>
-						{context.framework7AppContext.theme.material ? (
-							<Navbar>
-								<NavLeft>
-									<Link icon="icon-bars" openPanel="left" />
-								</NavLeft>
-								<NavCenter sliding>Framework7</NavCenter>
-								<NavRight>
-									<Link icon="icon-bars" openPanel="right"></Link>
-								</NavRight>
-							</Navbar>
-						) : null}						
-						<ContentBlockTitle>Welcome to my App</ContentBlockTitle>
-						<ContentBlock inner>
-							<p>Duis sed erat ac eros ultrices pharetra id ut tellus. Praesent rhoncus enim ornare ipsum aliquet ultricies. Pellentesque sodales erat quis elementum sagittis.</p>
-						</ContentBlock>
-						<ContentBlockTitle>Navigation</ContentBlockTitle>
-						<List>
-							<ListItem link="/about/" title="About"></ListItem>
-							<ListItem link="/form/" title="Form"></ListItem>							
-						</List>
-						<ContentBlockTitle>Side Panels</ContentBlockTitle>
-						<ContentBlock>
-							<GridRow>
-								<GridCol width={50}>
-									<Button openPanel="left">Left Panel</Button>
-								</GridCol>
-								<GridCol width={50}>
-									<Button openPanel="right">Right Panel</Button>
-								</GridCol>
-							</GridRow>
-						</ContentBlock>
-						<ContentBlockTitle>Modals</ContentBlockTitle>
-						<ContentBlock>
-							<GridRow>
-								<GridCol width={50}>
-									<Button openPopup="#popup">Popup</Button>
-								</GridCol>
-								<GridCol width={50}>
-									<Button openLoginScreen="#login-screen">Login Screen</Button>
-								</GridCol>
-							</GridRow>
-						</ContentBlock>
+						<Tabs>
+							<Tab id="program" />
+							<Tab id="bodovi" />
+						</Tabs>
+
+						<Toolbar tabbar labels>
+							<Link iconFa="calendar" href="/tabs/program" routeTabLink="#program" text="Program" />
+							<Link iconFa="star" href="/tabs/bodovi" routeTabLink="#bodovi" text="Bodovi" />
+						</Toolbar>
+
 					</Page>
 				</Pages>
 			</View>
@@ -139,23 +44,6 @@ const MainViews = (props, context) => {
 MainViews.contextTypes = {
 	framework7AppContext: PropTypes.object
 };
-
-const AppPopup = () => (
-	<Popup id="popup">
-		<View navbarFixed>
-			<Pages>
-				<Page>
-					<Navbar title="Popup">
-						<NavRight>
-							<Link closePopup>Close</Link>
-						</NavRight>
-					</Navbar>
-					<ContentBlock>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, architecto. Cupiditate laudantium rem nesciunt numquam, ipsam. Voluptates omnis, a inventore atque ratione aliquam. Omnis iusto nemo quos ullam obcaecati, quod.</ContentBlock>
-				</Page>
-			</Pages>
-		</View>
-	</Popup> 
-);
 
 const AppLoginScreen = () => (
 	<LoginScreen id="login-screen">
@@ -188,11 +76,8 @@ const AppLoginScreen = () => (
 export const App = () => (	
 	//Change themeType to "material" to use the Material theme
 	<Framework7App themeType="ios" routes={routes}>		
-		<Statusbar />		
-		<LeftPanel />
-		<RightPanel />
+		<Statusbar />
 		<MainViews />
-		<AppPopup />
 		<AppLoginScreen />
 	</Framework7App>  
 );
