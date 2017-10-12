@@ -6,11 +6,13 @@
     "react-scripts": "0.9.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "framework7": "^1.5.3",
-    "framework7-react": "^0.9.1",
+    "framework7-react": "^0.9.3",
+    "js-cookie": "^2.1.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-qr-reader": "https://github.com/JodusNodus/react-qr-reader.git#ios11-fix"
+    "react-qr-reader": "git+https://github.com/JodusNodus/react-qr-reader.git#ios11-fix"
   },
   "scripts": {
     "start": "react-scripts start",

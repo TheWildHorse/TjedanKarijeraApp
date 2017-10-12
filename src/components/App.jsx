@@ -1,27 +1,26 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Component} from 'react';
+
+import Cookies from 'js-cookie';
 
 import {
 	Framework7App, Statusbar, View, Navbar, Pages, Page,
-	List, ListItem, Views, Link, NavCenter, NavRight,
-	LoginScreen, LoginScreenTitle, ListButton, ListLabel, FormLabel, FormInput, Tab, Tabs, Toolbar
+	Views, Link, NavCenter, NavRight,
+	LoginScreen, Tab, Tabs, Toolbar
 } from 'framework7-react';
 
 import {routes} from '../routes';
+import {Login} from './pages/Login';
 
 const MainViews = (props, context) => {
 	return (
 		<Views>
 			<View id="main-view" navbarThrough dynamicNavbar={true} main url="/tabs/program">
-				{/* Navbar */}
-				{context.framework7AppContext.theme.ios ? (
-					<Navbar>
-						<NavCenter sliding>Tjedan Karijera</NavCenter>
-						<NavRight>
-							<Link iconFa="sign-out" openPanel="right"></Link>
-						</NavRight>
-					</Navbar>
-				) : null}
-				{/* Pages */}
+				<Navbar>
+					<NavCenter sliding>Tjedan Karijera</NavCenter>
+					<NavRight>
+						<Link onClick={props.signOut} iconFa="sign-out" ></Link>
+					</NavRight>
+				</Navbar>
 				<Pages>
 					<Page>
 						<Tabs>
@@ -45,39 +44,42 @@ MainViews.contextTypes = {
 	framework7AppContext: PropTypes.object
 };
 
-const AppLoginScreen = () => (
-	<LoginScreen id="login-screen">
-		<View>
-			<Pages>
-				<Page loginScreen>
-					<LoginScreenTitle>Login</LoginScreenTitle>
-					<List form>
-						<ListItem>
-							<FormLabel>Username</FormLabel>
-							<FormInput name="username" placeholder="Username" type="text" />
-						</ListItem>
-						<ListItem>
-							<FormLabel>Password</FormLabel>
-							<FormInput name="password" type="password" placeholder="Password" />
-						</ListItem>
-					</List>
-					<List>
-						<ListButton title="Sign In" closeLoginScreen />
-						<ListLabel>
-							<p>Click Sign In to close Login Screen</p>
-						</ListLabel>
-					</List>
-				</Page>
-			</Pages>
-		</View>
-	</LoginScreen>
-);
+export class App extends Component {
+	constructor(props, context) {
+		super(props, context);
 
-export const App = () => (	
-	//Change themeType to "material" to use the Material theme
-	<Framework7App themeType="ios" routes={routes}>		
-		<Statusbar />
-		<MainViews />
-		<AppLoginScreen />
-	</Framework7App>  
-);
+		this.state = {
+			loginScreenOpened: false
+		};
+	}
+	componentDidMount() {
+		if(Cookies.get('email') === undefined) {
+			this.setState({loginScreenOpened: true});
+		}
+	}
+	signOut() {
+		Cookies.remove('email');
+		Cookies.remove('password');
+		this.setState({loginScreenOpened: true});
+	}
+	closeLogin() {
+		if(Cookies.get('email') !== undefined) {
+			this.setState({loginScreenOpened: false});
+		}
+	}
+	render() {
+		return (
+			<Framework7App themeType="ios" routes={routes}>
+				<Statusbar />
+				<MainViews signOut={this.signOut.bind(this)} />
+				<LoginScreen id="login-screen" opened={this.state.loginScreenOpened}>
+					<View>
+						<Pages>
+							<Login closeLogin={this.closeLogin.bind(this)}/>
+						</Pages>
+					</View>
+				</LoginScreen>
+			</Framework7App>
+		);
+	}
+};

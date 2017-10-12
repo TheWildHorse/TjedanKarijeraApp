@@ -19,7 +19,6 @@ export class QRReaderView extends Component {
                 <Page>
                     <QrReader
                         facingMode="rear"
-                        style="video"
                         onError={this.handleError}
                         onScan={this.handleScan}
                     />
