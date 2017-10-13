@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Page, ContentBlockTitle, List, ListItem, FormLabel, FormInput, Button, Popup} from 'framework7-react';
-import {QRReaderView} from './QRReaderView';
+import {Page, ContentBlockTitle, List, ListItem, FormLabel, FormInput, Button} from 'framework7-react';
+import {User} from '../services/User';
 
 
 const pStyle = {margin: '1em 0'};
@@ -10,7 +10,24 @@ export class Form extends Component {
         super(props, context);
 
         this.state = {
+            user: {
+                bodovi: "-"
+            },
+            rang: [
+                {
+                    bodovi: "-"
+                }
+            ]
         };        
+    }
+    componentDidMount() {
+        var us = new User();
+        us.getUser(function(user) {
+            this.setState({user: user});
+        }.bind(this));
+        us.getRang(function(rang) {
+            this.setState({rang: rang});
+        }.bind(this));
     }
 
     render() {
@@ -20,18 +37,14 @@ export class Form extends Component {
                 <List form>
                     <ListItem>
                         <FormLabel>Tvoje stanje</FormLabel>
-                        <FormInput type="text" value="100" disabled/>
+                        <FormInput type="text" value={this.state.user.bodovi} disabled/>
                     </ListItem>
                     <ListItem>
                         <FormLabel>Najbolji</FormLabel>
-                        <FormInput type="text" value="120" disabled/>
+                        <FormInput type="text" value={this.state.rang[0].bodovi} disabled/>
                     </ListItem>
                 </List>
-                <Button style={pStyle} openPopup="#qr-reader">Skeniraj QR kod</Button>
-
-                <Popup id="qr-reader">
-                    <QRReaderView/>
-                </Popup>
+                <Button style={pStyle} href="/tabs/scan" routeTabLink="#scan">Skeniraj QR kod</Button>
             </Page>
         );
     }

@@ -26,11 +26,13 @@ const MainViews = (props, context) => {
 						<Tabs>
 							<Tab id="program" />
 							<Tab id="bodovi" />
+							<Tab id="scan" />
 						</Tabs>
 
 						<Toolbar tabbar labels>
 							<Link iconFa="calendar" href="/tabs/program" routeTabLink="#program" text="Program" />
 							<Link iconFa="star" href="/tabs/bodovi" routeTabLink="#bodovi" text="Bodovi" />
+							<Link iconFa="qrcode" href="/tabs/scan" routeTabLink="#scan" text="Scan" />
 						</Toolbar>
 
 					</Page>
@@ -49,7 +51,9 @@ export class App extends Component {
 		super(props, context);
 
 		this.state = {
-			loginScreenOpened: false
+			loginScreenOpened: false,
+			user: null,
+			rang: null
 		};
 	}
 	componentDidMount() {
@@ -71,7 +75,7 @@ export class App extends Component {
 		return (
 			<Framework7App themeType="ios" routes={routes}>
 				<Statusbar />
-				<MainViews signOut={this.signOut.bind(this)} />
+				<MainViews user={this.state.user} rang={this.state.rang} signOut={this.signOut.bind(this)} />
 				<LoginScreen id="login-screen" opened={this.state.loginScreenOpened}>
 					<View>
 						<Pages>
