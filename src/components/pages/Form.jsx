@@ -16,8 +16,8 @@ export class Form extends Component {
     render() {
         return (
             <Page>
-                <ContentBlockTitle>TK Bodovi</ContentBlockTitle>
-                <List form>
+                <ContentBlockTitle>Bodovi</ContentBlockTitle>
+                <List form id="points">
                     <ListItem>
                         <FormLabel>Tvoje stanje</FormLabel>
                         <FormInput type="text" value="100" disabled/>
@@ -27,7 +27,7 @@ export class Form extends Component {
                         <FormInput type="text" value="120" disabled/>
                     </ListItem>
                 </List>
-                <Button style={pStyle} openPopup="#qr-reader">Skeniraj QR kod</Button>
+                <Button id="points" style={pStyle} openPopup="#qr-reader">Skeniraj QR kod</Button>
 
                 <Popup id="qr-reader">
                     <QRReaderView/>

@@ -16,7 +16,7 @@ const MainViews = (props, context) => {
 		<Views>
 			<View id="main-view" navbarThrough dynamicNavbar={true} main url="/tabs/program">
 				<Navbar>
-					<NavCenter sliding>Tjedan Karijera</NavCenter>
+					<NavCenter sliding>FOI Tjedan Karijera</NavCenter>
 					<NavRight>
 						<Link onClick={props.signOut} iconFa="sign-out" ></Link>
 					</NavRight>
