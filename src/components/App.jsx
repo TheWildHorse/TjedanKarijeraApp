@@ -11,12 +11,18 @@ import {
 import {routes} from '../routes';
 import {Login} from './pages/Login';
 
+let framework7;
+let currentRoute;
+
+export const getFramework7 = () => framework7;
+export const getCurrentRoute = () => currentRoute;
+
 const MainViews = (props, context) => {
 	return (
 		<Views>
 			<View id="main-view" navbarThrough dynamicNavbar={true} main url="/tabs/program">
 				<Navbar>
-					<NavCenter sliding>Tjedan Karijera</NavCenter>
+					<NavCenter sliding>FOI Tjedan Karijera</NavCenter>
 					<NavRight>
 						<Link onClick={props.signOut} iconFa="sign-out" ></Link>
 					</NavRight>
@@ -57,9 +63,11 @@ export class App extends Component {
 		};
 	}
 	componentDidMount() {
+		getFramework7().mainView.router.loadPage('/tabs/program')
 		if(Cookies.get('email') === undefined) {
 			this.setState({loginScreenOpened: true});
 		}
+
 	}
 	signOut() {
 		Cookies.remove('email');
@@ -73,7 +81,7 @@ export class App extends Component {
 	}
 	render() {
 		return (
-			<Framework7App themeType="ios" routes={routes}>
+			<Framework7App themeType="ios" routes={routes} onFramework7Init={f7 => framework7 = f7} onRouteChange={route => currentRoute = route}>
 				<Statusbar />
 				<MainViews user={this.state.user} rang={this.state.rang} signOut={this.signOut.bind(this)} />
 				<LoginScreen id="login-screen" opened={this.state.loginScreenOpened}>

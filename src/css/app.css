@@ -1,3 +1,196 @@
-/* =========
-Your custom styles go here
- ========= */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+
+.sliding.center {
+    color: #99567F;
+    font-size: 22px;
+    font-family: "Open Sans Condensed";
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.swiper-container.swiper-container-horizontal {
+    height: auto;
+}
+
+#swiperTitle, .content-block-title {
+    font-size: 25px;
+    text-align: left;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.content-block-title {
+    padding-left: 0px;
+    color: black;
+    margin: 25px 0 25px 15px;
+    text-transform: none;
+}
+
+
+#eventContent {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.toolbar-inner > a {
+    color: #99567F;
+}
+
+.toolbar-inner > a > span {
+    font-size: 13px;
+}
+
+.right > a {
+    color: #99567F;
+    padding-right: 10px;
+}
+
+.toolbar-inner > a.active {
+    color: #99567F;
+}
+
+.navbar {
+    background: rgba(249, 249, 249, 0.9);
+    height: 86px;
+}
+
+.toolbar {
+    background: rgba(249, 249, 249, 0.9);
+}
+
+.page {
+    background: white;
+}
+
+.navbar-fixed .page-content, .navbar-through .page-content {
+    padding-top: 86px;
+}
+
+.card {
+    color: white;
+    border-radius: 12px;
+}
+
+.card-footer {
+    color: white;
+    letter-spacing: 0.1px;
+}
+
+.card-header {
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+#lecture {
+    background: #468EB5;
+}
+
+#event {
+    background: #F7A30A;
+}
+
+#workshop {
+    background: #C72835;
+}
+
+.accordion-item-content {
+    font-weight: 100;
+}
+
+.swiper-slide.swiper-slide-active {
+    margin-bottom: 55px;
+}
+
+.button {
+    border-radius: 8px;
+    border-color: transparent;
+    background: #99567F;
+    color: white;
+    height: 50px;
+    width: 288px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    margin: 0px auto !important;
+    font-size: 17px;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+}
+
+#points .item-input {
+    height: 100px;
+    width: 100px !important;
+    background: #95a5a6;
+    border-radius: 100%;
+}
+
+#points .item-content {
+    padding-bottom: 20px;
+}
+
+#points .item-input > input {
+    text-align: center !important;
+    color: white !important;
+    font-size: 30px !important;
+    justify-content: center !important;
+    height: auto !important;
+    padding-top: 30% !important;
+    padding-bottom: 30% !important;
+    opacity: 1;
+}
+
+#points.list-block > ul:after, #points.list-block > ul:before, #points.list-block .item-inner:after {
+    display: none;
+}
+
+.navbar:after {
+    display: none;
+}
+
+.login-screen-content.page-content {
+    background: #fff;
+    color: white;
+}
+
+#loginButton {
+    color: #fff;
+    background: #99567F;
+    top: 20%;
+}
+
+#login .list-block {
+    margin-top: 45%;
+}
+
+#loginImg {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#login .item-inner {
+    width: 95%;
+}
+
+.inset.content-block {
+    color: white;
+}
+
+::-webkit-input-placeholder, #login input {
+    color: black;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}

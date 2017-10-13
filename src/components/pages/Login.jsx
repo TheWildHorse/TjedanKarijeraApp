@@ -43,8 +43,8 @@ export class Login extends Component {
 
     render() {
         return (
-            <Page loginScreen>
-                <ContentBlockTitle>Prijavi se</ContentBlockTitle>
+            <Page loginScreen id="login">
+                <img id="loginImg" src="http://cpsrk.foi.hr/sites/default/files/2017-09/tk2017_banner.jpg"></img>
                 { this.state.error !== "" &&
                     <ContentBlock inset>
                         { this.state.error }
@@ -52,15 +52,13 @@ export class Login extends Component {
                 }
                 <List form>
                     <ListItem>
-                        <FormLabel>E-mail</FormLabel>
-                        <FormInput type="text" value={this.state.email} onChange={this.handleEmailChange.bind(this)}/>
+                        <FormInput placeholder="E-mail" type="text" value={this.state.email} onChange={this.handleEmailChange.bind(this)}/>
                     </ListItem>
                     <ListItem>
-                        <FormLabel>Zaporka</FormLabel>
-                        <FormInput type="text" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
+                        <FormInput placeholder="Lozinka" type="text" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
                     </ListItem>
                 </List>
-                <Button style={pStyle} onClick={this.loginButtonClick.bind(this)}>Prijavi se</Button>
+                <Button id="loginButton" style={pStyle} onClick={this.loginButtonClick.bind(this)}>Prijavi se</Button>
             </Page>
         );
     }

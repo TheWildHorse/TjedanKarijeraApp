@@ -33,8 +33,8 @@ export class Form extends Component {
     render() {
         return (
             <Page>
-                <ContentBlockTitle>TK Bodovi</ContentBlockTitle>
-                <List form>
+                <ContentBlockTitle>Bodovi</ContentBlockTitle>
+                <List form id="points">
                     <ListItem>
                         <FormLabel>Tvoje stanje</FormLabel>
                         <FormInput type="text" value={this.state.user.bodovi} disabled/>
