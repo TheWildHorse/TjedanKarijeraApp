@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Page, Accordion, AccordionContent, AccordionItem, AccordionToggle, Tabs, Tab,
-    Card, CardContent, CardFooter, CardHeader, Swiper, SwiperSlide} from 'framework7-react';
+    Card, CardContent, CardFooter, CardHeader, Swiper, SwiperSlide, ContentBlock} from 'framework7-react';
 import axios from 'axios';
 import Parser from 'html-react-parser';
 import { render } from 'react-dom';
@@ -46,6 +46,9 @@ export class About extends Component {
             <Page>
                 <Swiper>
                     <SwiperSlide>
+                        <ContentBlock>
+                            Swipe da pregledaš ostale dane ->
+                        </ContentBlock>
                         <p id="swiperTitle">Ponedjeljak</p>
                         {this.state[1].map(function(object, i){
                             object = object.attributes;

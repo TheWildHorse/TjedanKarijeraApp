@@ -13,7 +13,7 @@
     "js-cookie": "^2.1.4",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-qr-reader": "https://github.com/JodusNodus/react-qr-reader.git#ios11-fix"
+    "react-qr-reader": "https://github.com/TheWildHorse/react-qr-reader#ios11-fix"
   },
   "scripts": {
     "start": "react-scripts start",

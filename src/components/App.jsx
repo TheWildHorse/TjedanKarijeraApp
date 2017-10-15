@@ -67,7 +67,6 @@ export class App extends Component {
 		if(Cookies.get('email') === undefined) {
 			this.setState({loginScreenOpened: true});
 		}
-
 	}
 	signOut() {
 		Cookies.remove('email');
