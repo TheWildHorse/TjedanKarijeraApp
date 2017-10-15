@@ -159,7 +159,7 @@ body {
 
 .login-screen-content.page-content {
     background: #fff;
-    color: white;
+    color: black;
 }
 
 #loginButton {
@@ -182,7 +182,7 @@ body {
 }
 
 .inset.content-block {
-    color: white;
+    color: black;
 }
 
 ::-webkit-input-placeholder, #login input {
